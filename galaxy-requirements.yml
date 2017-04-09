@@ -1,0 +1,14 @@
+- src: https://github.com/wimpy/wimpy.build
+  name: wimpy.build
+
+- src: https://github.com/wimpy/wimpy.deploy
+  version: master
+  name: wimpy.deploy
+
+- src: https://github.com/wimpy/wimpy.ecr
+  version: master
+  name: wimpy.ecr
+
+- src: https://github.com/wimpy/wimpy.slack
+  version: master
+  name: wimpy.slack
