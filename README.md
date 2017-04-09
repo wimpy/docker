@@ -1,5 +1,5 @@
 # Docker Wimpy Deploy  [![Build Status](https://travis-ci.org/wimpy/docker.svg?branch=master)](https://travis-ci.org/wimpy/docker)
-This is a Docker image that contains everything you need to deploy using Wimpy.
+This is a [Docker image](https://hub.docker.com/r/fiunchinho/wimpy/) that contains everything you need to deploy using Wimpy.
 It installs all Wimpy roles and their dependencies.
 
 ## Usage
