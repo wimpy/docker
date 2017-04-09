@@ -8,9 +8,4 @@ env:
     - secure: "A6YixmZWcH7MltKll1YP9RSEbcEyE4eBSYiW3xO8VGMWxgYQAcF3azNMchSbfkbN4pA4V+K0dnevZwJXZRLpAb9+OCMpiBm8QSKVdBAW97TVHfwfPWC6oeNNYRcxGkkMvH3p3cj9z+96fRs5fuK1a7D7QXHcBSITAlO+8l8lfEIaZzz3TmvUzdxJIzejIT32E1UJqeFGamZk518phAOKdb0JgUFDqhBOgW5j0sdnSbhvwU6C0tJWRnbE8tvvrmu5vE3BFsLoG3jFLBf958o6nkrBK4Rx1ApH0e4V/F9zVCA4zCDwFLluOOSq8UaEuKcWzoHQxL3VcWao12P9uL/pjNkGl91ZiuWuI2iO09FEkmYLJbwAm//OofIGLgKGoUCBz4i7fc38WGHKpUR6LxWq2AgbL3gp8NjvPw8jI5oKkGoBInpMyUCCGn1fk0VknL70N1NBNTPSQwsNZFTQWSStPYPdbOHN1uzow183uBYxBQfXO1fUH649iHMr/lt3rocWwvAP/+WgzMNLPxVlnjQI/Ram51McbQ8Gz//uBGPd55etvXneYRXS425GNRWVKealboM6+yMm6JdYzuCH5xv0HYflbBzAiRYiGY1fKNkeNsYKSO5pbaxPrbmvlk2r5LDfiQ1RArb3Er83IoZ9Xvrl5ojtzBPKoTgL85rsDzUkrCk=" # DOCKER_PASS
 
 script:
-  - export REPO=fiunchinho/wimpy
-  - export TAG=`if [ -z "${TRAVIS_TAG}" ]; then echo "latest"; else echo "${TRAVIS_TAG}" ; fi`
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - docker build -t ${REPO}:latest .
-  - docker tag $REPO:latest $REPO:$TAG
-  - docker push $REPO
+  - ./build.sh
