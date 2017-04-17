@@ -1,6 +1,14 @@
+- src: https://github.com/wimpy/wimpy.environment
+  version: master
+  name: wimpy.environment
+
 - src: https://github.com/wimpy/wimpy.build
   version: v0.3.0
   name: wimpy.build
+
+- src: https://github.com/wimpy/wimpy.infra_discover
+  version: master
+  name: wimpy.infra_discover
 
 - src: https://github.com/wimpy/wimpy.deploy
   version: v0.3.0
