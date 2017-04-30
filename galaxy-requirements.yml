@@ -3,7 +3,7 @@
   name: wimpy.environment
 
 - src: https://github.com/wimpy/wimpy.build
-  version: v0.3.0
+  version: v0.4.0
   name: wimpy.build
 
 - src: https://github.com/wimpy/wimpy.infra_discover
@@ -11,12 +11,8 @@
   name: wimpy.infra_discover
 
 - src: https://github.com/wimpy/wimpy.deploy
-  version: v0.3.0
+  version: v0.4.0
   name: wimpy.deploy
-
-- src: https://github.com/wimpy/wimpy.ecr
-  version: v0.3.0
-  name: wimpy.ecr
 
 - src: https://github.com/wimpy/wimpy.slack
   version: master
