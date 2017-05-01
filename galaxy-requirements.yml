@@ -7,7 +7,7 @@
   name: wimpy.build
 
 - src: https://github.com/wimpy/wimpy.deploy
-  version: v0.5.1
+  version: v0.5.2
   name: wimpy.deploy
 
 - src: https://github.com/wimpy/wimpy.slack
