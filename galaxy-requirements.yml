@@ -11,7 +11,7 @@
   name: wimpy.infra_discover
 
 - src: https://github.com/wimpy/wimpy.deploy
-  version: v0.5.0
+  version: v0.5.1
   name: wimpy.deploy
 
 - src: https://github.com/wimpy/wimpy.slack
