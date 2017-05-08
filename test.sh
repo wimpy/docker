@@ -18,6 +18,7 @@ function deploy_first_canary() {
 
 function deploy_second_canary() {
     git clone https://github.com/wimpy/canary.git canary2
+
     cd canary2 && git checkout blue_green && docker run --rm -it \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v "$PWD:/app" \
