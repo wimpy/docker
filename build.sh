@@ -63,10 +63,9 @@ function clean_environments() {
 function clean_application() {
     aws ecr delete-repository --force --repository-name canary
     aws ecr delete-repository --force --repository-name canary2
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r
-    echo "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains (\"canary\")).StackName' -r | xargs -n1 aws cloudformation delete-stack --stack-name"
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r | xargs -n1 aws cloudformation delete-stack --stack-name
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE --stack-status-filter UPDATE_COMPLETE
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE --stack-status-filter UPDATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE --stack-status-filter UPDATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r | xargs -t -n1 aws cloudformation delete-stack --stack-name
     aws cloudformation stack-delete-complete --stack-name canary-resources
 }
 
