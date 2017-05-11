@@ -47,8 +47,8 @@ function deploy_third_canary() {
 }
 
 function clean_base() {
-    aws s3 rm s3://StorageBucket --recursive
-    aws s3 rm s3://LogBucket --recursive
+    aws s3api list-buckets --query 'Buckets[]' | jq '.[] | select(.Name | contains ("log-bucket")).Name' | xargs -t -n1 -I{} aws s3 rm s3://{} --recursive
+    aws s3api list-buckets --query 'Buckets[]' | jq '.[] | select(.Name | contains ("storage-bucket")).Name' | xargs -t -n1 -I{} aws s3 rm s3://{} --recursive
     aws cloudformation delete-stack --stack-name base
     aws cloudformation stack-delete-complete --stack-name base
 }
