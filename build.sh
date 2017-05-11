@@ -55,18 +55,14 @@ function clean_base() {
 
 function clean_environments() {
     aws cloudformation delete-stack --stack-name staging
-    aws cloudformation stack-delete-complete --stack-name staging
     aws cloudformation delete-stack --stack-name production
-    aws cloudformation stack-delete-complete --stack-name production
 }
 
 function clean_application() {
     aws ecr delete-repository --force --repository-name canary
     aws ecr delete-repository --force --repository-name canary2
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r
     aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE | jq '.StackSummaries[] | select(.StackName | contains ("canary")).StackName' -r | xargs -t -n1 aws cloudformation delete-stack --stack-name
-    aws cloudformation stack-delete-complete --stack-name canary-resources
+    aws cloudformation wait stack-delete-complete --stack-name canary-resources
 }
 
 function clean() {
@@ -77,7 +73,12 @@ function clean() {
 
 function docker_build() {
     docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
-    docker build -t ${REPO}:latest .
+    docker build \
+        --build-arg vcs_branch=`git rev-parse --abbrev-ref HEAD` \
+        --build-arg vcs_ref=`git rev-parse HEAD` \
+        --build-arg build_date=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+        -t ${REPO}:latest .
+
     docker tag ${REPO}:latest ${REPO}:${TAG}
 }
 
