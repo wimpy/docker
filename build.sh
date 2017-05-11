@@ -50,7 +50,7 @@ function clean_base() {
     aws s3api list-buckets --query 'Buckets[]' | jq '.[] | select(.Name | contains ("log-bucket")).Name' | xargs -t -n1 -I{} aws s3 rm s3://{} --recursive
     aws s3api list-buckets --query 'Buckets[]' | jq '.[] | select(.Name | contains ("storage-bucket")).Name' | xargs -t -n1 -I{} aws s3 rm s3://{} --recursive
     aws cloudformation delete-stack --stack-name base
-    aws cloudformation stack-delete-complete --stack-name base
+    aws cloudformation wait stack-delete-complete --stack-name base
 }
 
 function clean_environments() {
