@@ -30,4 +30,6 @@ jobs:
     - stage: Clean
       script: ./clean.sh
     - stage: Publish
-      script: docker push ${REPO}
+      script:
+        - docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
+        - docker push ${REPO}

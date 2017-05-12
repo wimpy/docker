@@ -4,7 +4,6 @@ set -euv
 
 export TAG=`if [ -z "${TRAVIS_TAG}" ]; then echo "latest"; else echo "${TRAVIS_TAG}" ; fi`
 
-docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
 docker build \
           --build-arg vcs_branch=`git rev-parse --abbrev-ref HEAD` \
           --build-arg vcs_ref=`git rev-parse HEAD` \
