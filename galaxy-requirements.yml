@@ -1,5 +1,5 @@
 - src: https://github.com/wimpy/wimpy.environment
-  version: v0.2.1
+  version: v0.2.2
   name: wimpy.environment
 
 - src: https://github.com/wimpy/wimpy.build
