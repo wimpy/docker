@@ -17,15 +17,9 @@ before_install:
   - sudo pip install awscli
   - docker pull fiunchinho/wimpy
 
-jobs:
-  include:
-    - stage: Build
-      script: ./build.sh
-    - stage: Test
-      script: ./test.sh
-    - stage: Clean
-      script: ./clean.sh
-    - stage: Publish
-      script:
-        - docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
-        - docker push ${REPO}
+script:
+  - ./build.sh
+  - ./test.sh
+  - ./clean.sh
+  - docker login -e "${DOCKER_EMAIL}" -u "${DOCKER_USER}" -p "${DOCKER_PASS}"
+  - docker push ${REPO}
