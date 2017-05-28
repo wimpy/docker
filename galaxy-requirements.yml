@@ -1,9 +1,9 @@
 - src: https://github.com/wimpy/wimpy.environment
-  version: v0.2.2
+  version: master
   name: wimpy.environment
 
 - src: https://github.com/wimpy/wimpy.build
-  version: v0.5.1
+  version: master
   name: wimpy.build
 
 - src: https://github.com/wimpy/wimpy.deploy
