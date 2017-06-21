@@ -3,11 +3,11 @@
   name: wimpy.environment
 
 - src: https://github.com/wimpy/wimpy.build
-  version: master
+  version: v0.7.0
   name: wimpy.build
 
 - src: https://github.com/wimpy/wimpy.deploy
-  version: master
+  version: v0.9.0
   name: wimpy.deploy
 
 - src: https://github.com/wimpy/wimpy.slack
