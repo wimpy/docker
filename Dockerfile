@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 ENTRYPOINT ["/sbin/tini", "--", "ansible-playbook"]
 CMD ["--version"]
@@ -9,7 +9,7 @@ VOLUME ["/app"]
 WORKDIR /app
 ENV PWD /app
 
-RUN apk add --update --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ tini=0.14.0-r0 python py-pip openssl ca-certificates git \
+RUN apk add --update tini python py-pip openssl ca-certificates git \
     && apk --update add --virtual build-dependencies python-dev libffi-dev openssl-dev build-base \
     && pip install --upgrade pip cffi \
     && pip install -r /tmp/requirements.txt \
